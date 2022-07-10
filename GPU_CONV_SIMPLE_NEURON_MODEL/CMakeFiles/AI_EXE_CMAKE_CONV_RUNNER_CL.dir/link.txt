@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/AI_EXE_CMAKE_CONV_RUNNER_CL.dir/main.cc.o CMakeFiles/AI_EXE_CMAKE_CONV_RUNNER_CL.dir/read.cc.o CMakeFiles/AI_EXE_CMAKE_CONV_RUNNER_CL.dir/model/model.cc.o  -o AI_EXE_CMAKE_CONV_RUNNER_CL  /usr/lib/x86_64-linux-gnu/libOpenCL.so 

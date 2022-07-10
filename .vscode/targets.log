@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jul  5 12:46:26 2022
+# Make data base, printed on Sat Jul  9 21:57:55 2022
 
 # Variables
 
@@ -117,7 +119,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 695635
+GIO_LAUNCHED_DESKTOP_FILE_PID = 861468
 # automatic
 %F = $(notdir $%)
 # environment
@@ -183,7 +185,7 @@ SHLVL = 0
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-be62ec5e-cb6b-4ac4-8332-cb361a1e8d40.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-9a293564-a7a0-4cf5-9c62-8c38a1880f7b.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -255,7 +257,7 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LANG = C
 # environment
-VSCODE_PID = 695723
+VSCODE_PID = 861524
 # environment
 NVM_RC_VERSION = 
 # variable set hash-table stats:
@@ -278,6 +280,7 @@ NVM_RC_VERSION =
 # Files
 
 # Not a target:
+ 
 all:
 #  Command line target.
 #  Implicit rule search has been done.
@@ -307,9 +310,6 @@ makefile:
 # Not a target:
 GNUmakefile:
 #  Implicit rule search has been done.
- 
-make: *** No rule to make target 'all'.  Stop.
-
 #  File does not exist.
 #  File has been updated.
 #  Failed to be updated.
@@ -328,6 +328,6 @@ make: *** No rule to make target 'all'.  Stop.
 # strcache performance: lookups = 18 / hit rate = 16%
 # hash-table stats:
 # Load=15/8192=0%, Rehash=0, Collisions=1/18=6%
-# Finished Make data base on Tue Jul  5 12:46:26 2022
+# Finished Make data base on Sat Jul  9 21:57:55 2022
 
  

@@ -1,1 +1,0 @@
-/usr/bin/c++  -D_REETRANT -Wall -Wextra -pedantic -Wno-long-long -ggdb -O0 -g  -rdynamic CMakeFiles/app.dir/main.cc.o  -o app  -lOpenCL 
