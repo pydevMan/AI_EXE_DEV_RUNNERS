@@ -17,17 +17,13 @@ algorithm
 -
 iostream
 -
+math.h
+-
 CL/cl.hpp
 -
 read.hh
 /home/natemcafee/Documents/GitHub/AI_EXE_DEV_RUNNERS/GPU_CONV_SIMPLE_NEURON_MODEL/read.hh
 model/model.hh
-/home/natemcafee/Documents/GitHub/AI_EXE_DEV_RUNNERS/GPU_CONV_SIMPLE_NEURON_MODEL/model/model.hh
-
-/home/natemcafee/Documents/GitHub/AI_EXE_DEV_RUNNERS/GPU_CONV_SIMPLE_NEURON_MODEL/model/model.cc
-algorithm
--
-model.hh
 /home/natemcafee/Documents/GitHub/AI_EXE_DEV_RUNNERS/GPU_CONV_SIMPLE_NEURON_MODEL/model/model.hh
 
 /home/natemcafee/Documents/GitHub/AI_EXE_DEV_RUNNERS/GPU_CONV_SIMPLE_NEURON_MODEL/model/model.hh
@@ -39,20 +35,6 @@ stdlib.h
 -
 CL/cl.hpp
 -
-
-/home/natemcafee/Documents/GitHub/AI_EXE_DEV_RUNNERS/GPU_CONV_SIMPLE_NEURON_MODEL/read.cc
-fstream
--
-cstring
--
-algorithm
--
-iostream
--
-regex
--
-read.hh
-/home/natemcafee/Documents/GitHub/AI_EXE_DEV_RUNNERS/GPU_CONV_SIMPLE_NEURON_MODEL/read.hh
 
 /home/natemcafee/Documents/GitHub/AI_EXE_DEV_RUNNERS/GPU_CONV_SIMPLE_NEURON_MODEL/read.hh
 string

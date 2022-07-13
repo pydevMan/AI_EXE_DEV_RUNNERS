@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include <math.h>
 
 #define __CL_ENABLE_EXCEPTIONS
 #include <CL/cl.hpp>
@@ -21,7 +22,7 @@ static const char source[] =
     "{\n"
     "    size_t i = get_global_id(0);\n"
     "    if (i < n) {\n"
-    "       c[i] = exp((charge * b[i]) + a[i])/(exp((charge * b[i]) + a[i])+1);"
+    "       c[i] = tanh(charge * b[i]) + a[i];"
     "    }\n"
     "}\n";
 
@@ -73,14 +74,12 @@ void Brain::run(cl::Context &context,
 
 	size_t i = 0;
 	for (auto new_charge : perform_cl_action(context, queue, add, neuron_layers[pos][cur_index].charge, biases, weights, neuron_layers[pos][cur_index].connections.size())){
-		printf("%f\n", new_charge);
 		(neuron_layers[pos][cur_index]).charge += new_charge;
 		i++;
 	}
 }
 
 int main(int argc, char **argv){
-    const size_t N = 36;
 
     try {
 	// Get list of OpenCL platforms.
@@ -154,8 +153,18 @@ int main(int argc, char **argv){
 
 	auto out = my_brain.run_network(context, queue, add, {0.5,1});
 
-	for (auto item : out)
-		printf("%f\n", item);
+	std::string output_write = "";
+
+	for (auto item: out)
+		output_write += std::to_string(std::exp(item)/(std::exp(item)+1)) + "\n";
+
+	std::ofstream write_out(argv[2]);
+
+	write_out.clear();
+
+	write_out << output_write;
+
+	write_out.clear();
 	
     } catch (const cl::Error &err) {
 	std::cerr

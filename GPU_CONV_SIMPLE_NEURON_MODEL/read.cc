@@ -37,7 +37,6 @@ Brain compile_brain(std::vector<std::vector<neuron_compile_struct>> content){
         std::for_each(layer.begin(), layer.end(),
         [&to_append, &i](neuron_compile_struct cur){
             Neuron pending;
-            printf("lallala\n");
             Synape<Neuron> cur_synapse;
             pending.charge = 0.0;
             pending.order_in_row = i;
@@ -61,7 +60,6 @@ Brain compile_brain(std::vector<std::vector<neuron_compile_struct>> content){
         });
 
         i = 0;
-        printf("layer done\n");
         out.add_layer(to_append);
         to_append.clear();
     }
