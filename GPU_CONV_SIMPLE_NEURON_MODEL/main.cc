@@ -80,7 +80,16 @@ void Brain::run(cl::Context &context,
 }
 
 int main(int argc, char **argv){
+	std::vector<std::string> argv_v = {};
+	for (auto i = 1; i < argc; i++)
+		argv_v.push_back(argv[i]);
 
+	if (argv_v.size() <= 2){
+		printf("needs atleast two arguments");
+		exit(1);
+	}
+
+	
     try {
 	// Get list of OpenCL platforms.
 	std::vector<cl::Platform> platform;
@@ -149,7 +158,7 @@ int main(int argc, char **argv){
 	cl::Kernel add(program, "add");
 	
 
-	Brain my_brain = compile_brain(compile_file(argv[1]));
+	Brain my_brain = compile_brain(compile_file(argv_v[1]));
 
 	auto out = my_brain.run_network(context, queue, add, {0.5,1});
 
@@ -158,7 +167,7 @@ int main(int argc, char **argv){
 	for (auto item: out)
 		output_write += std::to_string(std::exp(item)/(std::exp(item)+1)) + "\n";
 
-	std::ofstream write_out(argv[2]);
+	std::ofstream write_out(argv_v[2]);
 
 	write_out.clear();
 
