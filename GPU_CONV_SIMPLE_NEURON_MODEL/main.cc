@@ -26,6 +26,27 @@ static const char source[] =
     "    }\n"
     "}\n";
 
+//writing a versin of the input file with the charges of the neurons after the calculatins
+void output_train_mode_file(Brain model, const std::string filename){
+	std::string output_code = "";
+	for (auto &layer: model.neuron_layers){
+		for (auto &neuron: layer){
+			for (auto &conn: neuron.connections){
+				output_code += std::to_string(conn.to.get()->order_in_row);
+				output_code += " " + std::to_string(conn.bias);
+				output_code += " " + std::to_string(conn.weight);
+				output_code += " " + std::to_string(conn.from.get()->charge) + "\n";
+			}
+			output_code += "NN\n";	
+		}
+		output_code += "NL\n";
+	}
+
+	std::ofstream fout(filename);
+	fout.clear();
+	fout << output_code; 
+	fout.close();
+}
 
 
 std::vector<float> perform_cl_action(cl::Context &context, cl::CommandQueue &queue,
@@ -80,15 +101,9 @@ void Brain::run(cl::Context &context,
 }
 
 int main(int argc, char **argv){
-	std::vector<std::string> argv_v = {};
-	for (auto i = 1; i < argc; i++)
-		argv_v.push_back(argv[i]);
-
-	if (argv_v.size() <= 2){
-		printf("needs atleast two arguments");
-		exit(1);
-	}
-
+	const std::string filename = argv[1];
+	const std::string outfile = argv[2];
+	const std::string output_learn_filename = filename + ".learn";
 	
     try {
 	// Get list of OpenCL platforms.
@@ -158,22 +173,22 @@ int main(int argc, char **argv){
 	cl::Kernel add(program, "add");
 	
 
-	Brain my_brain = compile_brain(compile_file(argv_v[1]));
-
+	Brain my_brain = compile_brain(compile_file(filename));
+	
+	//writing to our file and simply running the network
 	auto out = my_brain.run_network(context, queue, add, {0.5,1});
-
 	std::string output_write = "";
 
 	for (auto item: out)
 		output_write += std::to_string(std::exp(item)/(std::exp(item)+1)) + "\n";
 
-	std::ofstream write_out(argv_v[2]);
+	std::ofstream write_out(outfile);
 
 	write_out.clear();
 
 	write_out << output_write;
 
-	write_out.clear();
+	write_out.close();
 	
     } catch (const cl::Error &err) {
 	std::cerr
